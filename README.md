@@ -15,7 +15,7 @@
 |  ---------------------------------------------- |
 |  [@o3ozzvb](https://github.com/o3ozzvb)|
 |  [@Jinnie-J](https://github.com/Jinnie-J) |
-
+|  [@limjaein](https://github.com/limjaein) |
 
 
 ## 학습 주제
