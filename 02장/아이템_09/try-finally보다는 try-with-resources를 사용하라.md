@@ -67,7 +67,7 @@ static void copy(String src, String dst) throws IOException {
 - 위의 try-finally로 작성했던 코드를 try-with-resources로 바꾼 코드이다.
 - 코드가 더 짧고 문제를 진단하기도 훨씬 좋다.
 - readLine과 close 호출 양쪽에서 예외가 발생하면, close에서 발생한 예외는 숨겨지고 readLine에서 발생한 예외가 기록된다.
-- 숨겨진 예외들도 그냥 버러지지는 않고, 스택 추적 내역에 '숨겨졌다(supressed)'는 꼬리표를 달고 출력된다.
+- 숨겨진 예외들도 그냥 버려지지는 않고, 스택 추적 내역에 '숨겨졌다(supressed)'는 꼬리표를 달고 출력된다.
 - try-with-resources도 catch 절을 쓸 수 있다. catch 절을 사용하면 try 문을 중첩시키지 않아도 다수의 예외를 처리할 수 있다.
 
 ## 결론
