@@ -157,7 +157,11 @@ public boolean equals(Object o) {
 <b>구체 클래스를 확장해 새로운 값을 추가하면서 `equals` 규약을 만족시킬 방법은 존재하지 않는다.</b>
 그렇다면 `equals` 안의 `instanceof` 검사를 `getClass` 검사로 바꾸면 규약도 지키고 값도 추가하면서 구체 클래스를 상속할 수 있을까?
 
-#### 리스코프 치환 원칙 위배
+#### 리스코프 치환 원칙 위배 케이스
+> ### 📍 리스코프 치환 원칙이란?  
+> 하위 클래스의 객체가 상위 클래스 객체를 대체하더라고 소프트웨어의 기능을 깨트리지 않아야 한다.
+> 
+`Point`의 `equals` 메소드가 아래와 같다고 생각해보자.
 ```java
 @Override 
 public boolean equals(Object o) {
@@ -167,8 +171,8 @@ public boolean equals(Object o) {
     return p.x == x && p.y == y;
 }
 ```
-
-결론은 아니다.  
+ 
+`Point`의 하위 클래스는 정의상 여전히 `Point` 이므로 어디서든 `Point` 로써 활용될 수 있어야 하지만, 이 경우 그렇지 않다.  
 이 경우 같은 구현 클래스의 객체와 비교할 때만 `true`를 반환할 수 있기 때문에 실제로 활용할 수는 없다.  
 ####
 예를 들어 주어진 점이 (반지름이 1인) 단위 원 안에 있는지를 판별하는 메서드가 필요하다고 해보자.
@@ -192,15 +196,19 @@ public class CounterPoint extends Point {
     }
     public static int numberCreated() { return counter.get(); }
 }
-```
-만약 `CounterPoint`의 인스턴스를 `onUnitCircle` 메서드에 넘기면 어떻게 될까?  
-`Point` 클래스의 `equals`를 `getClass`를 사용해 작성했다면 x, y 값이 같아도 `onUnitCircle` 메서드는 `false`를 반환한다.  
-반면, `Point` 클래스의 `equals`를 `instanceof` 기반으로 올바르게 구현했다면 제대로 동작할 것이다.
-####
-`리스코프 치환 원칙`에 따르면, 어떤 타입에 있어 중요한 속성이라면 그 하위 타입에서도 마찬가지로 중요하다.  
-**따라서 그 타입의 모든 메서드가 하위 타입에서도 똑같이 잘 작동해야 한다.**  
-하지만 `equals`를 `getClass`를 사용해 작성한다면 이를 위반하게 된다.
 
+public static void main(String[] args) {
+    Point p1 = new Point(1, 0);
+    Point p2 = new CounterPoint(1, 0);
+    
+    // true를 출력한다.
+    System.out.println(onUnitCircle(p1));
+    
+    // true를 출력해야 하지만, Point의 equals가 getClass를 사용해 작성되었다면 그렇지 않다.
+    System.out.println(onUnitCircle(p12);
+}
+```
+###
 #### 해결 방법 1 : 상속 대신 컴포지션을 사용하라
 **컴포지션 이란?**  
 기존 클래스를 확장하는 대신, 새로운 클래스를 만들고 `private 필드`로 기존 클래스의 인스턴스를 참조하는 방법을 통해 기능을 확장시키는 것이다.
