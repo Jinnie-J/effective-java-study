@@ -34,8 +34,8 @@
 ### 3장
 | 아이템
 :---: |
-[아이템 10. equals는 일반 규약을 지켜 재정의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/02장/아이템_10/equals는_일반_규약을_지켜_재정의하라.md) |
-[아이템 11. equals를 재정의하려거든 hashCode도 재정의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/02장/아이템_11/equals를_재정의하려거든_hashCode도_재정의하라.md) |
+[아이템 10. equals는 일반 규약을 지켜 재정의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/03장/아이템_10/equals는_일반_규약을_지켜_재정의하라.md) |
+[아이템 11. equals를 재정의하려거든 hashCode도 재정의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/03장/아이템_11/equals를_재정의하려거든_hashCode도_재정의하라.md) |
 [아이템 12. toString을 항상 재정의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/03장/아이템_12/toString을_항상_재정의하라.md) |
 [아이템 13. clone 재정의는 주의해서 진행하라](https://github.com/Jinnie-J/effective-java-study/blob/main/03장/아이템_13/clone_재정의는_주의해서_진행하라.md) |
 [아이템 14. Comparable을 구현할지 고려하라](https://github.com/Jinnie-J/effective-java-study/blob/main/03장/아이템_14/Comparable을_구현할지_고려하라.md) |
@@ -59,3 +59,4 @@
 | 아이템
 :---: |
 [아이템 26. 로 타입은 사용하지 말라](ttps://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_26/로_타입은_사용하지_말라.md)|
+
