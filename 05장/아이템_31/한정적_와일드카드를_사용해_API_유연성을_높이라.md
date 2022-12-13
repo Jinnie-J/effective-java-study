@@ -2,7 +2,7 @@
 # 한정적 와일드카드를 사용해 API 유연성을 높이라
 
 ## 매개변수화 타입은 불공변이다.
-- 서로 다른 Type1과 Type2가 있을 때 ```List<Type1> ```는 ```List<Type2>```의 하위 타입도 상위 타입도 아니다.
+- 서로 다른 Type1과 Type2가 있을 때 ```List<Type1>```는 ```List<Type2>```의 하위 타입도 상위 타입도 아니다.
 - 즉 ```List<String>```은 ```List<Object>```의 하위타입이 아니다.
 - ```List<Object>```에는 어떤 객체든지 넣을 수 있지만 ```List<String>```에는 문자열만 넣을 수 있다.
 
@@ -178,7 +178,7 @@ public static void swap(List<?> list, int i, int j); // 비한정적 와일드�
 - 단, List<?>라는 타입의 리스트에는 null 외에는 어떤 값도 넣을 수 없다. 이 경우, 도우미 메서드를 따로 작성하여 활용하는 방법으로 사용할 수 있다. 이때, 실제 타입을 알아내려면 이 도우미 메서드는 제네릭이어야 한다.
 
 ```java
-public static <E> void swap(List<E> list, int i, int j) {
+public static <E> void swap(List<?> list, int i, int j) {
     swapHelper(list, i, j);
 }
 // 와일드카드 타입을 실제 타입으로 바꿔주는 private 도우미 메서드
