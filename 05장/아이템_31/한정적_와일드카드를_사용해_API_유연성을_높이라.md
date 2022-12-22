@@ -195,3 +195,53 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 - 조금 복잡하더라도 와일드카드 타입을 적용하면 API가 훨씬 유연해진다. 따라서, 널리 쓰일 라이브러리를 작성한다면 반드시 와일드카드 타입을 적절히 사용해줘야 한다.
 - PECS 공식을 기억하자. 생산자(producer)는 extends를, 소비자(consumer)는 super를 사용한다.
 - Comparable과 Comparator는 모두 소비자이다.
+
+---
+### 생산자 / 소비자
+
+#### 생산자
+
+제네릭 Stack을 사용한 프로그램
+```java
+public static void main(String[] args){
+    Stack<Number> numberStack = new Stack<>();
+    //Number 하위 타입 integer
+    Iterable<Integer> integers = Arrays.asList(3,1,4,1,5,9);
+    numberStack.pushAll(integers);
+
+    //Number 하위 타입 double
+    Iterable<Double> doubles = Arrays.asList(3.1,1.0,4.0,1.0,5.0,9.0)
+    numberStack.pushAll(doubles);
+
+    //Stack.pop의 결과를 Stack의 상위타입(Object)에 넣는다
+    Collection<Object> objects = new ArrayList<>();
+    numberStack.popAll(objects);
+}
+```
+
+E 생산자(producer) 매개변수에 와일드카드 타입 적용
+```java
+public void pushAll(Iterable<? extends E> src){
+    for (E e: src)
+        push(e);
+}
+```
+- 생산자: 뭔가를 만들어 내는 것. 쌓이는 것. add하는 것. 추가하는 것. 저장하는 것
+- 매개변수(src)로 받아서 안쪽으로 쌓아두는 경우 (받아서 차곡차곡 쌓는 경우)
+- 컨테이너(Stack) 의 하위타입들을 넣어줄 수가 있다.
+- 상위타입으로만 하위타입 객체를 사용하게 되므로 안전하다.
+- 뭔가에(Stack) 넣을때(push) 받아오는 타입의 역할을 하는 것을 ***생산자*** 라고 한다.
+- 'E라는 타입의 하위타입을 받을 수 있다' 라는 것을 의미한다.
+
+#### 소비자
+```java
+public void popAll(Collection<? super E> dst){
+    while(!isEmpty())
+        dst.add(pop());
+}
+```
+- 소비자: 내가 가지고 있는 것을 꺼내서 consumer 역할을 하는 파라미터에 전달하는 것( 꺼내서 사용하는 것)
+- 하위타입(stack)을 꺼내서 상위타입(dst)에 넣는 경우
+- Stack의 상위타입(Object)에 Stack.pop의 결과를 담아도 문제가 없다.
+
+> PECS (producer-extends, consumer-super)
