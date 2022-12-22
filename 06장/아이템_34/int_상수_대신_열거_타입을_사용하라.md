@@ -138,7 +138,7 @@ public enum Operation {
 - 위의 코드는 Operation의 toString을 재정의해 해당 연산을 뜻하는 기호를 반환하도록 했다.
 
 toString 메서드를 재정의했다면, toString이 반환하는 문자열을 해당 열거 타입 상수로 반환해주는 fromString 메소드도 함께 제공하는 걸 고려해보자.
-- 위에서 toString 메소드를 이용해 기존 상수의 이름이 아닌 각 연산자의 기호를 반환하도록 구현하였다. 반대로 fromString 케소드를 구현하여 연산자 기호를 매개변수로 전달하면 알맞은 열거 타입의 객체를 반환하도록 해보자.
+- 위에서 toString 메소드를 이용해 기존 상수의 이름이 아닌 각 연산자의 기호를 반환하도록 구현하였다. 반대로 fromString 메소드를 구현하여 연산자 기호를 매개변수로 전달하면 알맞은 열거 타입의 객체를 반환하도록 해보자.
 
 ```java
 private static final Map<String, Operation> stringToEnum =
@@ -166,10 +166,10 @@ public enum PayrollDay {
     int pay(int minutesWorked, int payRate) {
         //기본 급여
         int basePay = minutesWorked * payRate;
-		//잔업수당
+        //잔업수당
         int overtimePay;
         switch (this) {
-        	//주말
+            //주말
             case SATURDAY:
             case SUNDAY:
                 overtimePay = basePay / 2;
@@ -179,7 +179,6 @@ public enum PayrollDay {
                 overtimePay = minutesWorked <= MINS_PER_SHIFT ?
                         0 : (minutesWorked - MINS_PER_SHIFT) * payRate / 2;
         }
-
         return basePay + overtimePay;
     }
 }
