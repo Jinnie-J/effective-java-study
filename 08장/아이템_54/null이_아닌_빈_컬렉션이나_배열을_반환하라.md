@@ -69,7 +69,12 @@ public Cheese[] getCheeses() {
 	return cheesesInStock.toArray(EMTPY_CHEESE_ARRAY);
 }
 ```
+  
 단순히 성능을 개선할 목적이라면 toArray에 넘기는 배열을 미리 할당하는 건 추천하지 않는다. 오히려 성능이 떨어진다는 연구 결과도 있다.  
-
+```Java
+/* 나쁜 예 - 배열을 미리 할당하면 성능이 나빠진다. (배열의 사이즈를 미리 할당하지 말 것) */
+return cheesesInStock.toArray(new Cheese[cheesesInStock.size()];
+```
+  
 > ### 핵심 정리
 > **null이 아닌, 빈 배열이나 컬렉션을 반환하라.** null을 반환하는 API는 사용하기 어렵고 오류 처리 코드도 늘어난다. 그렇다고 성능이 좋은 것도 아니다.
