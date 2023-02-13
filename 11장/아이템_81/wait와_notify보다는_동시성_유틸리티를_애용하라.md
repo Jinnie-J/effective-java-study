@@ -125,7 +125,13 @@ public static long time(Executor executor, int concurrency, Runnable action) thr
 ```
 이상의 기능을 wait와 notify만으로 구현한다면 난해하고 지저분한 코드가 되지만, CountDownLatch를 쓰면 직관적으로 구현할 수 있다.
 
-주의할 점이 있는데, time 메소드에 넘겨진 executor는 concurrency 매개변수로 지정한 동시성 수준만큼 스레드를 생성할 수 있어야한다. 그렇지 못하면 이 메소드는 결코 끝나지 않는다. 
+이 코드는 카운트다운 래치를 3개 사용한다.
+1. ready 래치는 작업자 스레드들이 준비가 완료됐음을 타이머 스레드에 통지할 때 사용한다.
+통지를 끝낸 작업자 스레드들은 두 번째 래치인 start가 열리기를 기다린다.
+2. 마지막 작업자 스레드가 ready.countDown을 호출하면 타이머 스레드가 시작 시각을 기록하고 start.countDown을 호출하여 기다리던 작업자 스레드들을 깨운다.
+3. 그 직후 타이머 스레드는 세 번째 래치인 done이 열리기를 기다린다.
+done 래치는 마지막 남은 작업자 스레드가 동작을 마치고 done.countDown을 호출하면 열린다.
+4. 타이머 스레드는 done 래치가 열리자마자 깨어나 종료 시각을 기록한다.
 
 ready CountDownLatch는 concurrency만큼 countdown이 되야 메인 스레드에서 시간을 측정할 수 있고, 다른 스레드들에서는 ready가 await가 끝나고 startNanos를 기록 후 start가 countdown이 될 때까지 await하고 있다. executor가 concurrency만큼 스레드를 생성할 수 없다면 countdown이 진행되지 못하니 이 메소드가 끝날 수 없는 것이다.
 
