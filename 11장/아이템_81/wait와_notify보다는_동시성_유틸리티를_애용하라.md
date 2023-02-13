@@ -55,7 +55,7 @@ public static String intern(String s) {
 ```
 
 ### 컬렉션 인터페이스 중 일부는 작업이 성공적으로 완료될 때까지 기다리도록 확장되었다.
-#### 예) Queueq
+#### 예) Queue
 Queue를 확장한 BlockingQueue 인터페이스에 추가된 메소드 중 take는 큐의 첫 원소를 꺼낸다. 이 때 만약 큐가 비었다면 새로운 원소가 추가될 때까지 기다린다. 이런 특성 덕에 작업 큐(생산자-소비자 큐)로 쓰기에 적합하다.
 
 작업 큐는 하나 이상의 생산자(producer) 스레드가 작업(work)를 큐에 추가하고, 하나 이상의 소비자(consumer) 스레드가 큐에 있는 작업을 꺼내 처리하는 형태다.
@@ -161,7 +161,7 @@ synchronized (obj) {
 - 대기중인 스레드가 notify 없이 깨어날 수 있는데 허위 각성(spurious wakeup) 현상이다.
 
 
-### notify와 notify 중 무엇을 선택해야 할까?
+### notify와 notifyAll 중 무엇을 선택해야 할까?
 notify는 스레드 하나만 깨우며, notifyAll은 모든 스레드를 깨운다.
 
 일반적으로 언제나 notifyAll을 사용하는게 낫다.
