@@ -84,7 +84,7 @@ public class ElvisStealer implements Serializable {
     // resolve되기 전의 Elvis 인스턴스의 참조를 저장
     impersonator = payload;
     // favoriteSongs 필드에 맞는 타입의 객체를 반환
-    return new String[] {"There is no cow level"};
+    return new String[] {"A Fool Such as I"};
   }
 }
 ```
@@ -114,7 +114,7 @@ public class ElvisImpersonator {
     Elvis elvis = (Elvis) deserialize(serializedForm);
     Elvis impersonator = ElvisStealer.impersonator;
     elvis.printFavorites(); // [Hound Dog, Heartbreak Hotel]
-    impersonator.printFavorites(); // [There is no cow level]
+    impersonator.printFavorites(); // [A Fool Such as I]
   }
 }
 ```
@@ -149,7 +149,7 @@ readResolve를 사용하는 방식이 완전히 쓸모없는 것은 아니다.
 readResolve 메서드의 접근성은 매우 중요하다. final 클래스에서라면 readResolve 메서드는 private 이어야 한다.  
 
 ### final이 아닌 클래스에서의 주의사항
-- priavet으로 선언하면 하위 클래스에서 사용할 수 없다.
+- priavate으로 선언하면 하위 클래스에서 사용할 수 없다.
 - package-private으로 선언하면 같은 패키지에 속한 하위 클래스에서만 사용할 수 있다.
 - protected나 public으로 선언하면 이를 재정의하지 않은 모든 하위 클래스에서 사용할 수 있다. 
 - protected나 public이면서 하위 클래스에서 재정의하지 않았다면, 하위 클래스의 인스턴스를 역직렬화하면 상위 클래스의 인스턴스를 생성하여 ClassCastException을 일으킬 수 있다.
