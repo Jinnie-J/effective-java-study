@@ -40,6 +40,9 @@ public final class Period {
 
 readObject가 이 두 작업을 제대로 수행하지 못하면 공격자는 아주 손쉽게 해당 클래스의 불변식을 깨뜨릴 수 있다.
 
+> writeObject, readObject:
+기본적인 자바 직렬화 또는 역직렬화 과정에서 별도의 처리가 필요할 때는 writeObject와 readObject 메서드를 클래스 내부에 선언해주면 된다. 물론 해당 클래스는 Serializable 인터페이스를 구현한 직렬화 대상 클래스여야 한다. 직렬화 과정에서는 writeObject가 역직렬화 과정에서는 readObject 메서드가 자동으로 호출된다.
+
 ## readObject
 readObject는 매개변수로 바이트 스트림을 받는 생성자라 할 수 있다. 
 - 보통의 경우 스트림은 정상적으로 생성된 인스턴스를 직렬화해 만들어진다.
@@ -51,6 +54,7 @@ readObject는 매개변수로 바이트 스트림을 받는 생성자라 할 수
 ```java
 public class BogusPeriod {
     // 진짜 Period 인스턴스에서는 만들어질 수 없는 바이트 스트림
+    // 정상적인 Period 인스턴스를 직렬화한 후에 손수 수정한 바이트 스트림이다.
     private static final byte[] serializedForm = {
         (byte)0xac, (byte)0xed, 0x00, 0x05, 0x73, 0x72, 0x00, 0x06,
         0x50, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x40, 0x7e, (byte)0xf8,
@@ -77,12 +81,13 @@ public class BogusPeriod {
 
 이 프로그램을 실행하면 다음과 같이 출력된다.
 ```
+# 실행 결과, end가 start 보다 과거다. 즉, Period의 불변식이 깨진다.
 Fri Jan 01 12:00:00: PST 1999 - Sun Jan 01 12:00:00 PST 1984
 ```
 Period를 직렬화할 수 있도록 선언한 것만으로 클래스의 불변식을 깨뜨리는 객체를 만들 수 있게 된 것이다.
 
 ### readObject 메서드의 유효성 검사
-위의 문제를 해결하려면 Period의 readObject 메서드가 ddefaultReadObject를 호출한 다음 역직렬화된 객체가 유효한지 검사해야 한다. 이 유효성 검사에 실패하면 InvalidOBjectException을 던지게 하여 잘못된 역직렬화가 일어나는 것을 막을 수 있다.
+위의 문제를 해결하려면 Period의 readObject 메서드가 defaultReadObject를 호출한 다음 역직렬화된 객체가 유효한지 검사해야 한다. 이 유효성 검사에 실패하면 InvalidObjectException을 던지게 하여 잘못된 역직렬화가 일어나는 것을 막을 수 있다.
 
 ```java
 //유효성 검사를 수행하는 readObject 메서드 - 아직 부족하다.
@@ -122,6 +127,7 @@ public class MutablePeriod {
 
             /*
              * 악의적인 '이전 객체 참조', 즉 내부 Date 필드로의 참조를 추가한다.
+             * 상세 내용은 자바 객체 직렬화 명세의 6.4절 참조.
              */
             byte[] ref = { 0x71, 0, 0x7e, 0, 5 }; // 참조 #5
             bos.write(ref); // 시작(start) 필드
@@ -206,3 +212,7 @@ transient 필드를 제외한 모든 필드의 값을 매개변수로 받아 유
 - 모든 불변식을 검사하여 어긋나는 게 발견되면 InvalidObjectException을 던진다. 방어적 복사 다음에는 반드시 불변식 검사가 뒤따라야 한다.
 - 역직렬화 후 객체 그래프 전체의 유효성을 검사해야 한다면 ObjectInputValidation 인터페이스를 사용하라
 - 직접적이든 간접적이든, 재정의할 수 있는 메서드는 호출하지 말자.
+
+---
+참조   
+https://madplay.github.io/post/what-is-readobject-method-and-writeobject-method
