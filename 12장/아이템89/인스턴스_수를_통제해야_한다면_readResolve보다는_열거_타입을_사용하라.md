@@ -38,13 +38,21 @@ Elvis 인스턴스의 직렬화 형태는 아무런 실 데이터를 가질 이�
 
 ### 공격 방법 예시
 1. readResolve 메서드와 인스턴스 필드 하나를 포함한 '도둑(Stealer)' 클래스를 작성한다.
-2. 이 클래스의 인스턴스 필드는 도둑이 '숨길' 직렬화된 싱글턴을 참조하는 역할을 한다.
-3. 직렬화된 스트림에서 싱글턴의 비휘발성 필드를 도둑의 인스턴스 필드로 교체한다.
---> 이제 싱글턴은 도둑을 참조하고 도둑은 싱글턴을 참조하는 순환고리가 만들어졌다.
-4. 싱글턴이 도둑을 포함하므로 역직렬화될 때 도둑의 readResolve 메서드가 먼저 호출된다.
-5. 그 결과, 도둑의 readResolve 메서드가 수행될 때 도둑의 인스턴스 필드에는 역직렬화 도중인 싱글턴의 참조가 담겨 있게 된다.
-6. 도둑의 readResolve 메서드는 이 인스턴스 필드가 참조한 값을 정적 필드로 복사하여 readResolve가 끝난 후에도 참조할 수 있도록 한다.
-7. 이 메서드는 도둑이 숨긴 transient 가 아닌 필드의 원래 타입에 맞는 값을 반환한다.
+2. 이 클래스의 인스턴스 필드(payload)는 도둑이 '숨길' 직렬화된 싱글턴을 참조하는 역할을 한다.
+3. 직렬화된 스트림에서 싱글턴의 비휘발성 필드를 도둑의 인스턴스 필드로 교체한다.   
+-> 이제 싱글턴은 도둑을 참조하고 도둑은 싱글턴을 참조하는 순환고리가 만들어졌다.  
+```Java
+Elvis(new).favoriteSongs = ElvisStealer(new)
+ElvisStealer(new).payload = Elvis(new)   // same elvis, circular reference
+```
+```Java
+Elvis(new).favoriteSongs = ElvisStealer(new).readResolve()
+=> Elvis(new).favoriteSongs = String[] { .... }
+```
+4. 싱글턴이 도둑을 포함하므로 역직렬화될 때 도둑의 readResolve 메서드가 먼저 호출된다.  
+5. 그 결과, 도둑의 readResolve 메서드가 수행될 때 도둑의 인스턴스 필드에는 역직렬화 도중인 싱글턴의 참조가 담겨 있게 된다.  
+6. 도둑의 readResolve 메서드는 이 인스턴스 필드가 참조한 값을 정적 필드로 복사하여 readResolve가 끝난 후에도 참조할 수 있도록 한다.  
+7. 이 메서드는 도둑이 숨긴 transient 가 아닌 필드의 원래 타입에 맞는 값을 반환한다.  
 (이 과정을 생략하면 직렬화 시스템이 도둑의 참조를 이 필드에 저장하려 할 때 VM이 `ClassCastException`을 던진다.)
 
 ```Java
