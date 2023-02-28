@@ -53,19 +53,19 @@
 [아이템 22. 인터페이스는 타입을 정의하는 용도로만 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/04장/아이템_22/인터페이스는_타입을_정의하는_용도로만_사용하라.md) |
 [아이템 23. 태그 달린 클래스보다는 클래스 계층구조를 활용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/04장/아이템_23/태그_달린_클래스보다는_클래스_계층_구조를_활용하라.md) |
 [아이템 24. 멤버 클래스는 되도록 static으로 만들라](https://github.com/Jinnie-J/effective-java-study/blob/main/04장/아이템_24/멤버_클래스는_되도록_static으로_만들라.md) |
-[아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라](ttps://github.com/Jinnie-J/effective-java-study/blob/main/04장/아이템_25/톱레벨_클래스는_한_파일에_하나만_담으라.md) |
+[아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라](https://github.com/Jinnie-J/effective-java-study/blob/main/04장/아이템_25/톱레벨_클래스는_한_파일에_하나만_담으라.md) |
 
 ### 5장
 | 아이템
 :---: |
-[아이템 26. 로 타입은 사용하지 말라](ttps://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_26/로_타입은_사용하지_말라.md)|
+[아이템 26. 로 타입은 사용하지 말라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_26/로_타입은_사용하지_말라.md)|
 [아이템 27. 비검사 경고를 제거하라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_27/비검사_경고를_제거하라.md)|
 [아이템 28. 배열보다는 리스트를 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_28/배열보다는%20리스트를%20사용하라.md)|
 [아이템 29. 이왕이면 제네릭 타입으로 만들라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_29/이왕이면_제네릭_타입으로_만들라.md)|
 [아이템 30. 이왕이면 제네릭 메서드로 만들라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_30/이왕이면_제네릭_메서드로_만들라.md)|
 [아이템 31. 한정적 와일드카드를 사용해 API 유연성을 높이라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_31/한정적_와일드카드를_사용해_API_유연성을_높이라.md)|
 [아이템 32. 제네릭과 가변인수를 함꼐 쓸 때는 신중하라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_32/제네릭과_가변인수를_함께_쓸_때는_신중하라.md)|
-[아이템 33. 타입 안전 이종 컨테이너를 고려하라](thttps://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_33/타입_안전_이종_컨테이너를_고려하라.md)|
+[아이템 33. 타입 안전 이종 컨테이너를 고려하라](https://github.com/Jinnie-J/effective-java-study/blob/main/05장/아이템_33/타입_안전_이종_컨테이너를_고려하라.md)|
 
 ### 6장
 | 아이템
@@ -116,10 +116,10 @@
 [아이템 62. 다른 타입이 적절하다면 문자열 사용을 피하라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_62/다른_타입이_적절하다면_문자열_사용을_피하라.md)|
 [아이템 63. 문자열 연결은 느리니 주의하라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_63/문자열_연결은_느리니_주의하라.md)|
 [아이템 64. 객체는 인터페이스를 사용해 참조하라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_64/객체는_인터페이스를_사용해_참조하라.md)|
-[아이템 65. 리플렉션보다는 인터페이스를 사용하라.](hhttps://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_65/리플렉션보다는_인터페이스를_사용하라.md)|
+[아이템 65. 리플렉션보다는 인터페이스를 사용하라.](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_65/리플렉션보다는_인터페이스를_사용하라.md)|
 [아이템 66. 네이티브 메서드는 신중히 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_66/네이티브_메서드는_신중히_사용하라.md)|
 [아이템 67. 최적화는 신중히 하라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_67/최적화는_신중히_하라.md)|
-[아이템 68. 일반적으로 통용되는 명명 규칙을 따르라](hhttps://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_68/일반적으로_통용되는_명명_규칙을_따르라.md)|
+[아이템 68. 일반적으로 통용되는 명명 규칙을 따르라](https://github.com/Jinnie-J/effective-java-study/blob/main/09장/아이템_68/일반적으로_통용되는_명명_규칙을_따르라.md)|
 
 
 ### 10장
@@ -129,8 +129,8 @@
 [아이템 70. 복구할 수 있는 상황에는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_70/복구할_수_있는_상황에는_검사_예외를%2C프로그래밍_오류에는_런타임_예외를_사용하라.md)|
 [아이템 71. 필요 없는 검사 예외 사용은 피하라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_71/필요_없는_검사_예외_사용은_피하라.md)|
 [아이템 72. 표준 예외를 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_72/표준_예외를_사용하라.md)|
-[아이템 73. 추상화 수준에 맞는 예외를 던지라](hhttps://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_73/추상화_수준에_맞는_예외를_던지라.md)|
-[아이템 74. 메서드가 던지는 모든 예외를 문서화하라](hhttps://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_74/메서드가_던지는_모든_예외를_문서화하라.md)|
+[아이템 73. 추상화 수준에 맞는 예외를 던지라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_73/추상화_수준에_맞는_예외를_던지라.md)|
+[아이템 74. 메서드가 던지는 모든 예외를 문서화하라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_74/메서드가_던지는_모든_예외를_문서화하라.md)|
 [아이템 75. 예외의 상세 메시지에 실패 관련 정보를 담으라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_75/예외의_상세_메시지에_실패_관련_정보를_담으라.md)|
 [아이템 76. 가능한 한 실패 원자적으로 만들라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_76/가능한_한_실패_원자적으로_만들라.md)|
 [아이템 77. 예외를 무시하지 말라](https://github.com/Jinnie-J/effective-java-study/blob/main/10장/아이템_77/예외를_무시하지_말라.md)|
@@ -140,7 +140,7 @@
 | 아이템
 :---: |
 [아이템 78. 공유 중인 가변 데이터는 동기화해 사용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_78/공유_중인_가변_데이터는_동기화해_사용하라.md)|
-[아이템 79. 과도한 동기화는 피하라](hhttps://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_79/과도한_동기화는_피하라.md)|
+[아이템 79. 과도한 동기화는 피하라](https://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_79/과도한_동기화는_피하라.md)|
 [아이템 80. 스레드보다는 실행자, 태스크, 스트림을 애용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_80/스레드보다는_실행자%2C태스크%2C스트림을_애용하라.md)|
 [아이템 81. wait와 notify보다는 동시성 유틸리티를 애용하라](https://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_81/wait와_notify보다는_동시성_유틸리티를_애용하라.md)|
 [아이템 82. 스레드 안전성 수준을 문서화하라](https://github.com/Jinnie-J/effective-java-study/blob/main/11장/아이템_82/스레드_안전성_수준을_문서화하라.md)|
